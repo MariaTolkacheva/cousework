@@ -1,0 +1,66 @@
+/* Main container */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    gap: 40px;
+}
+
+/* Content block */
+.intro-content {
+    max-width: 560px;
+}
+
+/* Heading */
+.intro-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1d3e81;
+}
+
+/* Paragraph */
+.intro-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Button container */
+.intro-button-container {
+    margin-top: 20px;
+}
+
+/* Button */
+.intro-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #0073e6;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.intro-button:hover {
+    background-color: #005bb5;
+}
+
+/* Image */
+.intro-image img {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .intro-heading {
+        font-size: 2rem;
+    }
+
+    .intro-text {
+        font-size: 0.9rem;
+    }
+}

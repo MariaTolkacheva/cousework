@@ -1,0 +1,36 @@
+/* Main container */
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Testimonial box */
+.testimonial-box {
+    max-width: 800px;
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacers for layout consistency */
+.spacer {
+    height: 10px;
+}
+
+/* Quote text */
+.testimonial-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #1d3e81;
+}
+
+/* Author name */
+.testimonial-author {
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+}

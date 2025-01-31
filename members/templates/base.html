@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" href="../static/footer.css">
+    {% block links %}{% endblock %}
+</head>
+<body>
+
+    {% block content %}{% endblock %}
+
+</body>
+<footer>
+    <!-- Footer Columns Container -->
+    <div class="footer-columns">
+
+        <!-- Left Column: Logo & Site Info -->
+        <div class="footer-column footer-info">
+            <div class="footer-branding">
+                <img src="your-logo.png" alt="Site Logo" class="footer-logo">
+                <div class="footer-text">
+                    <h2 class="footer-site-title">Your Site Name</h2>
+                    <p class="footer-site-tagline"><svg xmlns='http://www.w3.org/2000/svg'
+        xmlns:xlink='http://www.w3.org/1999/xlink'
+        viewBox='0 0 435 50'
+        style='background-color: #00000000;'
+        width='435px' height='50px'>
+
+        <style>
+            @font-face {
+                font-family: 'Fira Code';
+                font-style: normal;
+                font-weight: 400;
+                font-display: fallback;
+                src: url(data:font/truetype;base64,...); /* Your base64-encoded font */
+            }
+        </style>
+
+        <path id='path0'>
+            <animate id='d0' attributeName='d' begin='0s;d1.end'
+                dur='9000ms' fill='remove'
+                values='m0,25 h0 ; m0,25 h435 ; m0,25 h435 ; m0,25 h0'
+                keyTimes='0;0.71111111111111;0.82222222222222;1' />
+        </path>
+
+        <text font-family='"Fira Code", monospace' fill='#36BCF7' font-size='20'
+            dominant-baseline='auto'
+            x='0%' text-anchor='start'
+            letter-spacing='normal'>
+            <textPath xlink:href='#path0'>
+                Work smarter, not harder
+            </textPath>
+        </text>
+
+        <path id='path1'>
+            <animate id='d1' attributeName='d' begin='d0.end'
+                dur='9000ms' fill='remove'
+                values='m0,25 h0 ; m0,25 h435 ; m0,25 h435 ; m0,25 h0'
+                keyTimes='0;0.71111111111111;0.82222222222222;1' />
+        </path>
+
+        <text font-family='"Fira Code", monospace' fill='#36BCF7' font-size='20'
+            dominant-baseline='auto'
+            x='0%' text-anchor='start'
+            letter-spacing='normal'>
+            <textPath xlink:href='#path1'>
+                Financial literacy is key
+            </textPath>
+        </text>
+
+    </svg></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Column (Empty for Layout Spacing) -->
+        <div class="footer-column"></div>
+
+        <!-- Navigation Links Column -->
+        <div class="footer-column">
+            <nav class="footer-navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Contact & Social Links Column -->
+        <div class="footer-column">
+            <p class="footer-contact">hi@mygroovydomain.com</p>
+            <p class="footer-contact">(123) 456-7890</p>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon instagram">Instagram</a>
+                <a href="#" class="social-icon tiktok">TikTok</a>
+                <a href="#" class="social-icon facebook">Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Credit -->
+    <div class="footer-credit">
+
+        <p>Создано в качестве курсовой работы <a href="https://www.hse.ru/" rel="nofollow">EDA HSE</a></p>
+    </div>
+</footer>
+</html>
