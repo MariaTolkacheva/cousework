@@ -1,0 +1,118 @@
+/* Стили контейнера */
+.tabs-container {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Прячем радиокнопки */
+input[type="radio"] {
+    display: none;
+}
+
+/* Вкладки-кнопки */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background: #f1f1f1;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    transition: background 0.3s;
+}
+
+/* Контент вкладок скрыт по умолчанию */
+.tab-content {
+    display: none;
+}
+
+/* Отображаем контент, если выбран соответствующий input */
+#tab-login:checked ~ .tab-content#login {
+    display: block;
+}
+
+#tab-register:checked ~ .tab-content#register {
+    display: block;
+}
+
+/* Активная вкладка */
+#tab-login:checked ~ .tabs .tab-button[for="tab-login"],
+#tab-register:checked ~ .tabs .tab-button[for="tab-register"] {
+    background: #007bff;
+    color: white;
+}
+
+/* Кнопка отправки формы */
+.submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+
+/* Стили контейнера */
+.tabs-container {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Прячем радиокнопки */
+input[type="radio"] {
+    display: none;
+}
+
+/* Вкладки-кнопки */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background: #f1f1f1;
+    font-size: 16px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+/* Контент вкладок скрыт по умолчанию */
+.tab-content {
+    display: none;
+}
+
+/* Показываем активную вкладку */
+#tab-login:checked ~ .tab-content#login {
+    display: block;
+}
+
+#tab-register:checked ~ .tab-content#register {
+    display: block;
+}
+
+/* Подсветка активной вкладки */
+#tab-login:checked ~ .tabs label[for="tab-login"],
+#tab-register:checked ~ .tabs label[for="tab-register"] {
+    background: #007bff;
+    color: white;
+}
+
