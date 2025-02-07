@@ -54,6 +54,13 @@
     border-radius: 10px;
 }
 
+.intro-small img {
+    width: 60% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto; /* Centers the image */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .intro-heading {
