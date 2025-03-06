@@ -29,6 +29,12 @@
         <a href="#" class="btn-outline">Блог</a>
         <a href="/survey" class="btn-outline">Тестирование</a>
         <a href="#" class="btn-outline">Полезные матриалы</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'main' %} " class="btn-outline">My Statistics</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn-outline">Войти/Зарегистрироваться</a>
+        {% endif %}
+
     </div>
 
 
@@ -39,13 +45,13 @@
     <div class="feature-content alignwide">
         <div class="feature-images">
             <div class="image-grid">
-                <img src="https://dotcompatterns.wordpress.com/wp-content/uploads/2024/09/2-1.jpg" alt=""
+                <img src="../static/images/brain.jpg" alt=""
                      class="feature-image">
-                <img src="https://dotcompatterns.wordpress.com/wp-content/uploads/2024/09/2-1.jpg" alt=""
+                <img src="../static/images/books.jpg" alt=""
                      class="feature-image">
-                <img src="https://dotcompatterns.wordpress.com/wp-content/uploads/2024/09/2-1.jpg" alt=""
+                <img src="../static/images/doctors.jpg" alt=""
                      class="feature-image">
-                <img src="https://dotcompatterns.wordpress.com/wp-content/uploads/2024/09/2-1.jpg" alt=""
+                <img src="../static/images/philosophy.jpg" alt=""
                      class="feature-image">
             </div>
         </div>
