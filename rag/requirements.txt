@@ -1,6 +1,0 @@
-pypdf
-langchain
-chromadb
-pytest
-boto3
-langchain_chroma
