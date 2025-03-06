@@ -9,7 +9,7 @@ Actual Response: {actual_response}
 """
 
 
-def test_monopoly_rules():
+def test_lottery():
     assert query_and_validate(
         question="How lotteries can make our cities cleaner?",
         expected_response="$ In Ta they hold lotteries for dog owners",
