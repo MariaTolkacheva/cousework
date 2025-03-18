@@ -1,0 +1,59 @@
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}*/
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.post-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-date {
+    font-size: 14px;
+    color: #777;
+}
+
+.post-title a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    color: #333;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #333;
+    color: #fff;
+}

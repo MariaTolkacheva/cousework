@@ -30,7 +30,7 @@
         <a href="/survey" class="btn-outline">Тестирование</a>
         <a href="#" class="btn-outline">Полезные матриалы</a>
         {% if user.is_authenticated %}
-            <a href="{% url 'main' %} " class="btn-outline">My Statistics</a>
+            <a href="{% url 'score_history_by_id' 1%} " class="btn-outline">My Statistics</a>
         {% else %}
             <a href="{% url 'login' %}" class="btn-outline">Войти/Зарегистрироваться</a>
         {% endif %}

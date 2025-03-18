@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Quiz Result
+{% endblock %}
+
+
+{% block links %}
+<link rel="stylesheet" href="{% static '../static/footer.css' %}">
+<link rel="stylesheet" href="{% static '../static/testimonial.css' %}">
+<link rel="stylesheet" href="{% static '../static/intro.css' %}">
+{% endblock %}
+
+{% block content %}
+<p></p>
+<div class="intro-container">
+
+    <div class="intro-content">
+        <h2 class="intro-heading">{{ quiz.title }}</h2>
+        <p class="intro-text">Your score: {{ score }} out of {{ total }}</p>
+        <p class="intro-text">The correct answer{{ answer }}</p>
+        <div class="intro-button-container">
+            <button class="intro-button" type="submit">Submit</button>
+        </div>
+    </div>
+    <figure class="intro-image">
+        <img src="{% static '../static/quizesimg/1.jpg' %}" alt="Creative Abstract Painting">
+    </figure>
+
+</div>
+
+{% endblock %}
