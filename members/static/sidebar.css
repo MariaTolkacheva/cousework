@@ -1,0 +1,48 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-section ul li {
+    margin: 5px 0;
+}
+
+.sidebar-section ul li a {
+    text-decoration: none;
+    color: #008cf0;
+}
+
+.sidebar-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-links a {
+    display: block;
+    text-decoration: none;
+    color: #008cf0;
+    margin: 5px 0;
+}

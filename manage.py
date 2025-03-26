@@ -2,7 +2,17 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import logging
 
+LOG_FILE = "site.log"
+logging.basicConfig(
+    level=logging.INFO,  # Adjust to DEBUG for more verbosity
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE),  # Log to a file
+        logging.StreamHandler()  # Also log to console
+    ]
+)
 
 def main():
     """Run administrative tasks."""
