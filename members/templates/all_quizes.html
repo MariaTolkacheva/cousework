@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Survey
+{% endblock %}
+
+
+{% block links %}
+<link rel="stylesheet" href="../static/testimonial.css">
+<link rel="stylesheet" href="../static/intro.css">
+<link rel="stylesheet" href="../static/post.css">
+<link rel="stylesheet" href="../static/styles.css">
+{% endblock %}
+
+
+{% block content %}
+<div class="intro-container">
+
+    <div class="intro-content">
+        <h2 class="intro-heading">Квизы</h2>
+        <ul>
+            {% for quiz in quizzes %}
+            <div class="post-list">
+                <div class="post">
+                    <img src="../static/quizesimg/{{quiz.id}}.jpg" alt="Post Thumbnail" class="post-image">
+                    <div class="post-info">
+                        <span class="post-date">{{ quiz.id }}</span>
+                        <h3 class="post-title"><a href="{% url 'quiz_view' quiz.id %}">{{ quiz.title }}</a></h3>
+                    </div>
+                    <p class="intro-text">
+                        {{quiz.description}}
+                    </p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% for quiz in text_quizzes %}
+            <div class="post-list">
+                <div class="post">
+                    <img src="../static/quizesimg/{{quiz.id}}.jpg" alt="Post Thumbnail" class="post-image">
+                    <div class="post-info">
+                        <span class="post-date">{{ quiz.id }}</span>
+                        <h3 class="post-title"><a href="{% url 'quiz_forms' quiz.id %}">{{ quiz.title }}</a></h3>
+                    </div>
+                    <p class="intro-text">
+                        {{quiz.description}}
+                    </p>
+                </div>
+            </div>
+
+            {% endfor %}
+        </ul>
+
+    </div>
+
+
+</div>
+
+<div class="testimonial-container">
+    <div class="testimonial-box">
+        <div class="spacer"></div>
+
+        <h3 class="testimonial-quote">
+            “Crispy on the outside, gooey on the inside, and packed with chocolatey goodness in every bite. One taste,
+            and you'll be hooked—it's like a warm hug in cookie form!”
+        </h3>
+
+        <p class="testimonial-author">- Valerie, NY</p>
+
+        <div class="spacer"></div>
+    </div>
+</div>
+{% endblock %}
