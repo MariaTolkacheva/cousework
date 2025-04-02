@@ -2,6 +2,7 @@ import logging
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from rag.query_data import compare_results
 from .models import Quiz, Answer, UserScore
 from .forms import QuizForm
 
@@ -55,6 +56,7 @@ def form_view(request, quiz_id=None):
                 # Оцениваем каждый ответ
                 for question in questions:
                     user_answer = form.cleaned_data[f'question_{question.id}']
+                    correct_answers += compare_results(user_ans=user_answer,correct_ans=question.correct_answer)
                     correct_answers += question.correct_answer
                     if user_answer.lower() == question.correct_answer.lower():
                         total_score += 1  # Начисляем 1 балл за правильный ответ

@@ -4,7 +4,7 @@ from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaLLM
 
-from get_embedding_function import get_embedding_function
+from .get_embedding_function import get_embedding_function
 
 CHROMA_PATH = "chroma"
 
@@ -19,6 +19,19 @@ Answer the question based only on the following context:
 
 Answer the question based on the above context: {question}
 """
+
+COMPARE_TEMPLATE_CONTEXT = """
+Compare the answers based only on the following context:
+
+{context}
+
+---
+
+Compare the correct answer {correct_ans} ans user answer {user_ans} based on the above context
+"""
+
+COMPARE_TEMPLATE = """Compare the correct answer {correct_ans} ans user answer {user_ans}"""
+
 
 VERBOSITY_LEVELS = {
     0: logging.WARNING,  # Default if no -v is provided
@@ -56,6 +69,15 @@ def query_rag(query_text: str):
     sources = [doc.metadata.get("id", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
+    return response_text
+
+def compare_results(user_ans: str, correct_ans: str):
+    prompt_template = ChatPromptTemplate.from_template(COMPARE_TEMPLATE)
+    prompt = prompt_template.format(user_ans=user_ans, correct_ans=correct_ans)
+    logger.debug(f'prompt for comparing is {prompt}')
+
+    model = OllamaLLM(model=MODELTYPE)
+    response_text = model.invoke(prompt)
     return response_text
 
 
