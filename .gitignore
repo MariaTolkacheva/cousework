@@ -1,2 +1,3 @@
 __pycache__/
-site.log
+*.log
+db.sqlite3
