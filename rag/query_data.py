@@ -1,10 +1,11 @@
 import argparse
 import logging
-from langchain_chroma import Chroma
+
 from langchain.prompts import ChatPromptTemplate
+from langchain_chroma import Chroma
 from langchain_ollama import OllamaLLM
 
-from .get_embedding_function import get_embedding_function
+from rag.get_embedding_function import get_embedding_function
 
 CHROMA_PATH = "chroma"
 
@@ -30,7 +31,8 @@ Compare the answers based only on the following context:
 Compare the correct answer {correct_ans} ans user answer {user_ans} based on the above context
 """
 
-COMPARE_TEMPLATE = """Compare the correct answer {correct_ans} ans user answer {user_ans}"""
+COMPARE_TEMPLATE = """Compare the correct answers {correct_ans} ans user answers {user_ans} \
+    and give your feedback for each question"""
 
 
 VERBOSITY_LEVELS = {
@@ -40,25 +42,29 @@ VERBOSITY_LEVELS = {
     3: logging.NOTSET,   # -vvv (logs everything)
 }
 
+
 def setup_logging(verbosity: int):
     level = VERBOSITY_LEVELS.get(min(verbosity, 3), logging.NOTSET)
     logging.basicConfig(
         level=level,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
- 
+
+
 logger = logging.getLogger(__name__)
 
 
 def query_rag(query_text: str):
     logger.debug("preparing the database")
     embedding_function = get_embedding_function()
-    db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
+    db = Chroma(persist_directory=CHROMA_PATH,
+                embedding_function=embedding_function)
 
     logger.info("Search the DB")
     results = db.similarity_search_with_score(query_text, k=10)
 
-    context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
+    context_text = "\n\n---\n\n".join(
+        [doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
     logger.debug(f'prompt is {prompt}')
@@ -71,10 +77,12 @@ def query_rag(query_text: str):
     print(formatted_response)
     return response_text
 
+
 def compare_results(user_ans: str, correct_ans: str):
     prompt_template = ChatPromptTemplate.from_template(COMPARE_TEMPLATE)
-    prompt = prompt_template.format(user_ans=user_ans, correct_ans=correct_ans)
-    logger.debug(f'prompt for comparing is {prompt}')
+    prompt = prompt_template.format(
+        user_ans=user_ans, correct_ans=correct_ans)
+    logger.info('prompt for comparing is %s', prompt)
 
     model = OllamaLLM(model=MODELTYPE)
     response_text = model.invoke(prompt)

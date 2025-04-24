@@ -8,13 +8,15 @@ class Quiz(models.Model):
     description = models.CharField(max_length=255, default="")
 
     def __str__(self):
-        return self.title + ' - ' + str(self.is_bool) + ' - ' + self.description
+        return self.title + ' - ' + \
+            str(self.is_bool) + ' - ' + self.description
 
 
 class Question(models.Model):
     text = models.TextField()
     correct_answer = models.TextField(default="")
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
+    quiz = models.ForeignKey(
+        Quiz, on_delete=models.CASCADE, related_name='questions')
 
     def __str__(self):
         return self.text
@@ -32,13 +34,11 @@ class Answer(models.Model):
 class TextAnswer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     user_answer = models.TextField()
+    comparison_feedback = models.TextField()
     score = models.IntegerField(default=0, verbose_name="Балл")
 
     def __str__(self):
         return f"{self.question.text}"
-
-    def evaluate(self):
-        return 0
 
 
 class UserScore(models.Model):

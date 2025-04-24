@@ -9,3 +9,12 @@ class QuizForm(forms.Form):
                 label=question.text,
                 required=True,
             )
+
+
+class AskLLMForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['question'] = forms.CharField(
+            label="Вы можете задать вопрос модели и она ответит на него, опираясь на контекст из книг",
+            required=True,
+        )

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+import logging
 import os
 import sys
-import logging
 
 LOG_FILE = "site.log"
 logging.basicConfig(
@@ -13,6 +13,7 @@ logging.basicConfig(
         logging.StreamHandler()  # Also log to console
     ]
 )
+
 
 def main():
     """Run administrative tasks."""

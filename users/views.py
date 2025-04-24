@@ -1,10 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegistrationForm
+from django.shortcuts import redirect, render
+
+from users.forms import UserRegistrationForm
 
 
 def user_logout(request):
+    '''for logout'''
     logout(request)
     return redirect("main")
 
@@ -16,7 +18,8 @@ def register(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])  # Hash password
             user.save()
-            login(request, user)  # Automatically log in the user after registration
+            # Automatically log in the user after registration
+            login(request, user)
             return redirect('main')  # Redirect to the home page
     else:
         form = UserRegistrationForm()

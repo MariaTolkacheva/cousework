@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Results
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="../static/testimonial.css" />
+  <link rel="stylesheet" href="../static/intro.css" />
+  <link rel="stylesheet" href="../static/post.css" />
+  <link rel="stylesheet" href="../static/styles.css" />
+  <script>
+    const hash = '{{ hash_token }}'
+    const socket = new WebSocket(`ws://${window.location.host}/ws/askllm/${hash}/`)
+    
+    socket.onopen = () => console.log('✅ WebSocket открыт')
+    socket.onmessage = function (event) {
+      console.log('📩 Получено сообщение:', event.data)
+      const data = JSON.parse(event.data)
+      document.getElementById('result').innerText = data.message
+    }
+    socket.onerror = function (error) {
+      console.error('🚨 Ошибка WebSocket:', error)
+    }
+    socket.onclose = function () {
+      console.warn('❌ WebSocket закрыт')
+    }
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="intro-container">
+    <div class="intro-content">
+      <h2 class="intro-heading">Ответ модели:</h2>
+    </div>
+  </div>
+
+  <div class="testimonial-container">
+    <div class="testimonial-box">
+      <div class="spacer"></div>
+
+      <h3 class="testimonial-quote" id="result">Ожидаем результат</h3>
+
+      <p class="testimonial-author">Выполнено с помощью поиска по релевантным книгам</p>
+
+      <div class="spacer"></div>
+    </div>
+  </div>
+{% endblock %}

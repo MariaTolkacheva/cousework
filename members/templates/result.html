@@ -11,24 +11,39 @@ Quiz Result
 <link rel="stylesheet" href="{% static '../static/footer.css' %}">
 <link rel="stylesheet" href="{% static '../static/testimonial.css' %}">
 <link rel="stylesheet" href="{% static '../static/intro.css' %}">
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let quizId = {{ quiz_id }};
+            let pending = {{ pending|lower }};  // Флаг, если compare_results ещё не готово
+
+            if (pending) {
+                function checkStatus() {
+                    fetch(`/check_compare_results/${quizId}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.done) {
+                                document.getElementById("compare_result").innerText = data.compare_result;
+                                document.getElementById("loading").style.display = "none";
+                            } else {
+                                setTimeout(checkStatus, 3000);  // Повторяем запрос каждые 3 секунды
+                            }
+                        });
+                }
+                checkStatus();
+            }
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
 <p></p>
-<div class="intro-container">
-
-    <div class="intro-content">
-        <h2 class="intro-heading">{{ quiz.title }}</h2>
-        <p class="intro-text">Your score: {{ score }} out of {{ total }}</p>
-        <p class="intro-text">The correct answer{{ answer }}</p>
-        <div class="intro-button-container">
-            <button class="intro-button" type="submit">Submit</button>
-        </div>
+<h1>Ваш результат:</h1>
+    <p>Правильные ответы: {{ score }} из {{ total }}</p>
+    
+    <div id="loading">
+        <p>Ожидаем анализ ответов...</p>
     </div>
-    <figure class="intro-image">
-        <img src="{% static '../static/quizesimg/1.jpg' %}" alt="Creative Abstract Painting">
-    </figure>
 
-</div>
+    <p id="compare_result"></p>
 
 {% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Results
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="../static/testimonial.css" />
+  <link rel="stylesheet" href="../static/intro.css" />
+  <link rel="stylesheet" href="../static/post.css" />
+  <link rel="stylesheet" href="../static/styles.css" />
+  <script>
+    const quizId = {{ quiz_id }};
+    const socket = new WebSocket(
+        `ws://${window.location.host}/ws/quiz_result/${quizId}/`
+    );
+
+    socket.onopen = () => console.log("✅ WebSocket открыт");
+    socket.onmessage = function(event) {
+        console.log("📩 Получено сообщение:", event.data);
+        const data = JSON.parse(event.data);
+        document.getElementById("result").innerText = data.message;
+    };
+    socket.onerror = function(error) {
+        console.error("🚨 Ошибка WebSocket:", error);
+    };
+    socket.onclose = function() {
+        console.warn("❌ WebSocket закрыт");
+    };
+</script>
+{% endblock %}
+
+{% block content %}
+  <h2>Результат вычисляется...</h2>
+  <p id="result">Ожидаем результат</p>
+  <div class="intro-container">
+    <div class="intro-content">
+      <h2 class="intro-heading">Квизы</h2>
+      <ul>
+        {% for quiz in quizzes %}
+          <div class="post-list">
+            <div class="post">
+              <img src="../static/quizesimg/{{ quiz.id }}.jpg" alt="Post Thumbnail" class="post-image" />
+              <div class="post-info">
+                <span class="post-date">{{ quiz.id }}</span>
+                <h3 class="post-title"><a href="{% url 'quiz_view' quiz.id %}">{{ quiz.title }}</a></h3>
+              </div>
+              <p class="intro-text">{{ quiz.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="testimonial-container">
+    <div class="testimonial-box">
+      <div class="spacer"></div>
+
+      <h3 class="testimonial-quote">“Crispy on the outside, gooey on the inside, and packed with chocolatey goodness in every bite. One taste, and you'll be hooked—it's like a warm hug in cookie form!”</h3>
+
+      <p class="testimonial-author">- Valerie, NY</p>
+
+      <div class="spacer"></div>
+    </div>
+  </div>
+{% endblock %}
