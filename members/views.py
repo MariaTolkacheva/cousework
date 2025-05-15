@@ -35,6 +35,12 @@ def start_quiz_processing(request, quiz_id):
 
 def askllm_view(request):
     '''Ask LLM and get a view with an answer pretrained on provided resourses'''
+    if not request.user.is_authenticated:
+        messages.warning(
+            request,
+            'You need to be logged in to access this page.')
+        return redirect('login')
+
     if request.method == 'POST':
         hash_token: str = uuid.uuid4().hex
         form = AskLLMForm(request.POST)

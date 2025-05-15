@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from members.models import Quiz, UserScore
 from rag.query_data import compare_results, query_rag
+from rag.translate import Mode, translate
 
 
 @shared_task
@@ -71,13 +72,18 @@ def long_task(user_id: int, quiz_id: int, user_answer: str, correct_answer: str)
 
 
 @shared_task()
-def askllm_task(question_text: str, hash_token: str):
+def askllm_task(user_question: str, hash_token: str):
     """Task for asking LLM"""
 
     logging.info('Starting askllm_task')
 
-    feed_back = query_rag(query_text=question_text)
-    logging.info("Результат для запроса %s готов = %s", hash_token, feed_back)
+    translated_question = str(
+        translate(Mode.RUS_TO_ENG, user_question))
+
+    feedback = query_rag(query_text=translated_question)
+    translated_feedback = translate(Mode.ENG_TO_RUS,  feedback)
+    logging.info(
+        "Результат для запроса %s готов = %s и переведен в %s", hash_token, feedback, translated_feedback)
 
     channel_layer = get_channel_layer()
     group_name = f"askllm_{hash_token}"
@@ -89,8 +95,8 @@ def askllm_task(question_text: str, hash_token: str):
         group_name,
         {
             'type': 'send_result',
-            'message': feed_back
+            'message': str(translated_feedback)
         }
     )
     logging.info('before return result askllm_task')
-    return feed_back
+    return str(translated_feedback)

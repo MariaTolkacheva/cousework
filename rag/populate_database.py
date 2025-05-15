@@ -47,6 +47,7 @@ def split_documents(documents: list[Document]):
 
 
 def add_to_chroma(chunks: list[Document]):
+    "adding new data to our data base"
     # Load the existing database.
     db = Chroma(
         persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
@@ -65,9 +66,11 @@ def add_to_chroma(chunks: list[Document]):
     for chunk in chunks_with_ids:
         if chunk.metadata["id"] not in existing_ids:
             new_chunks.append(chunk)
+    full_lenght = len(new_chunks)
     new_chunks = new_chunks[:400]
-    if len(new_chunks):
-        print(f"👉 Adding new documents: {len(new_chunks)}")
+    if len(new_chunks) > 0:
+        print(
+            f"👉 Adding new documents: {len(new_chunks)} while {full_lenght} is still waiting")
         new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
         db.add_documents(new_chunks, ids=new_chunk_ids)
     else:

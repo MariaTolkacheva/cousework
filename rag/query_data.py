@@ -1,5 +1,6 @@
 import argparse
 import logging
+from pathlib import Path
 
 from langchain.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
@@ -7,7 +8,7 @@ from langchain_ollama import OllamaLLM
 
 from rag.get_embedding_function import get_embedding_function
 
-CHROMA_PATH = "chroma"
+CHROMA_PATH = str(Path.home() / "cousework/rag/chroma")
 
 MODELTYPE = "llama3.2"
 
@@ -67,7 +68,7 @@ def query_rag(query_text: str):
         [doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
-    logger.debug(f'prompt is {prompt}')
+    logger.warning(f'prompt is {prompt}')
 
     model = OllamaLLM(model=MODELTYPE)
     response_text = model.invoke(prompt)
