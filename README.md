@@ -49,3 +49,6 @@
   * *Good Economics for Hard Times* - Abhijit V. Banerjee
   * *The Choice Factory* - Richard Shotton
   * *Thinking, Fast and Slow* - Daniel Kahneman
+  * https://dev.to/hussainislam/django-fixtures-seeding-databases-5ai
+  * http://docs.djangoproject.com/en/5.2/topics/db/fixtures/
+  * https://www.geeksforgeeks.org/how-to-import-a-json-file-to-a-django-model/
