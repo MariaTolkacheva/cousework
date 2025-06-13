@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Behavioral economics
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="../static/myfirst.css" />
+  <link rel="stylesheet" href="../static/footer.css" />
+  <link rel="stylesheet" href="../static/featured-product.css" />
+  <link rel="stylesheet" href="../static/team.css" />
+  <style>
+    .history-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+      margin: 40px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #3498db, #9b59b6);
+      transform: translateX(-50%);
+    }
+    
+    .era {
+      position: relative;
+      width: calc(50% - 40px);
+      padding: 30px;
+      margin-bottom: 60px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      background: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .era:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .era:nth-child(odd) {
+      margin-left: auto;
+    }
+    
+    .era:nth-child(even) {
+      margin-right: auto;
+    }
+    
+    .era::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #3498db;
+      top: 40px;
+    }
+    
+    .era:nth-child(odd)::before {
+      right: -36px;
+    }
+    
+    .era:nth-child(even)::before {
+      left: -36px;
+    }
+    
+    .era h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .era h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #3498db, #9b59b6);
+      border-radius: 3px;
+    }
+    
+    .era p {
+      line-height: 1.8;
+      color: #34495e;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    
+    .key-points {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #3498db;
+      margin: 20px 0;
+    }
+    
+    .key-points li {
+      margin-bottom: 10px;
+      padding-left: 10px;
+      position: relative;
+    }
+    
+    .key-points li::before {
+      content: '•';
+      color: #3498db;
+      font-size: 1.4rem;
+      position: absolute;
+      left: -15px;
+      top: -2px;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+    
+      .era {
+        width: calc(100% - 40px);
+        margin-left: 40px !important;
+        margin-right: 0 !important;
+      }
+    
+      .era:nth-child(odd)::before,
+      .era:nth-child(even)::before {
+        left: -36px;
+        right: auto;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="call-to-action is-style-section-1">
+    <div class="cover alignwide" style="border-radius: 20px; min-height: 60vh;">
+      <img class="cover-image" src="../static/images/historicbook.jpg" alt="Historic books" data-object-fit="cover" />
+      <div class="cover-content">
+        <h1 class="cover-heading text-with-shadow has-theme-4-color has-text-color has-link-color">Историческая справка</h1>
+        <p class="cover-subtitle" style="font-size: 1.5rem; max-width: 800px; margin: 20px auto;">Эволюция поведенческой экономики от сомнений к мейнстриму</p>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+  </div>
+
+  <div class="history-content">
+    <div class="highlight-box">
+      <h2 style="margin-top: 0; color: #2c3e50;">Введение: Выход за рамки "Рационального Человека"</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7;">
+        Традиционная экономическая теория долгое время опиралась на модель <em>Homo economicus</em> — абсолютно рационального индивида, обладающего неограниченной вычислительной способностью, железной волей и эгоистичной мотивацией, всегда максимизирующего свою полезность. Однако реальные люди редко соответствовали этому идеалу. Понимание систематических отклонений человеческого поведения от этой модели и легло в основу поведенческой экономики — дисциплины, объединившей экономику и психологию.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="era">
+        <h3>Зарождение: Семена Сомнения (1950-е - 1960-е)</h3>
+        <p>Первые серьезные вызовы догме рациональности прозвучали в середине XX века:</p>
+        <div class="key-points">
+          <ul>
+            <li>
+              <strong>Герберт Саймон (Herbert Simon)</strong>: Ввел революционную концепцию "ограниченной рациональности". Доказал, что люди принимают решения не в поисках оптимума, а довольствуются "удовлетворительным" вариантом, используя ограниченные ресурсы. Нобелевская премия (1978).
+            </li>
+            <li>
+              <strong>Морис Алле (Maurice Allais) и Даниэль Эллсберг (Daniel Ellsberg)</strong>: Их эксперименты выявили фундаментальные "парадоксы", демонстрирующие, что реальные выборы людей нарушают ключевые аксиомы теории ожидаемой полезности.
+            </li>
+            <li>
+              <strong>Вернон Смит (Vernon Smith)</strong>: Заложил основы экспериментальной экономики. Нобелевская премия (2002).
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="era">
+        <h3>Революция: Когнитивные Искажения и Теория Перспектив (1970-е - 1980-е)</h3>
+        <p>Подлинную революцию в понимании принятия решений совершили психолог Даниэль Канеман и Амос Тверски:</p>
+        <div class="key-points">
+          <ul>
+            <li>
+              <strong>Эвристики и Систематические Ошибки</strong>: Идентифицировали упрощенные умственные правила (эвристики) и систематические ошибки:<ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Эвристика доступности</li>
+                <li>Эвристика репрезентативности</li>
+                <li>Эффект якорения</li>
+                <li>Излишняя уверенность</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Теория Перспектив (Prospect Theory, 1979)</strong>: Нобелевская премия (Канеман, 2002). Показала:<ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Оценка исходов относительно точки отсчёта</li>
+                <li>Асимметричное восприятие потерь и приобретений</li>
+                <li>Зависимость решений от формулировки проблемы</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="era">
+        <h3>Институционализация и Расширение Горизонтов (1990-е - 2000-е)</h3>
+        <p>Работы Канемана и Тверски вдохновили множество исследователей:</p>
+        <div class="key-points">
+          <ul>
+            <li>
+              <strong>Ричард Талер (Richard Thaler)</strong>: Углубил понимание ограниченной рациональности, самоконтроля и социальных предпочтений. Ввёл "ментальные счета".
+            </li>
+            <li>
+              <strong>Нобелевская премия (2017)</strong>: Талеру "за вклад в исследование поведенческой экономики".
+            </li>
+            <li>
+              <strong>Концепция "Подталкивания" (Nudge)</strong>: Либертарианский патернализм - мягкие изменения в архитектуре выбора.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="era">
+        <h3>Эра Применения и Интеграции (2000-е - настоящее время)</h3>
+        <p>Поведенческая экономика перестала быть чисто академической дисциплиной:</p>
+        <div class="key-points">
+          <ul>
+            <li>"Nudge Units": Специализированные подразделения в правительствах и корпорациях</li>
+            <li>Влияние на финансы, маркетинг, дизайн продуктов, управление персоналом</li>
+            <li>Интеграция с нейроэкономикой, big data и ИИ</li>
+            <li>Этические дискуссии о манипуляции и прозрачности</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="featured-product">
+    <div class="spacer"></div>
+
+    <div class="product-container">
+      <div class="product-image">
+        <img src="../static/images/dollars.jpg" alt="Behavioral economics influence" />
+      </div>
+      <div class="product-details">
+        <h2>История важна</h2>
+        <div class="product-description">
+          <p>История поведенческой экономики — это путь от маргинальных сомнений в рациональности до создания мощной научной парадигмы, коренным образом изменившей понимание человеческого поведения в экономическом контексте.</p>
+
+          <p>Открыв фундаментальные когнитивные искажения и социальные предпочтения, она предложила более реалистичную модель человека. Благодаря своей доказательной базе и практической применимости, поведенческая экономика прочно утвердилась как неотъемлемая часть современной экономической науки и мощный инструмент для дизайна более эффективных политик, продуктов и услуг, учитывающих реальную природу человеческого выбора.</p>
+
+          <p>Её развитие продолжается, ставя новые вопросы о границах рациональности и этике влияния на решения.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+  </section>
+{% endblock %}

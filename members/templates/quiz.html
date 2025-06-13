@@ -1,44 +1,36 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}
-{{ quiz.title }}
+  {{ quiz.title }}
 {% endblock %}
 
-
 {% block links %}
-<link rel="stylesheet" href="{% static '../static/footer.css' %}">
-<link rel="stylesheet" href="{% static '../static/testimonial.css' %}">
-<link rel="stylesheet" href="{% static '../static/intro.css' %}">
+  <link rel="stylesheet" href="{% static '../static/footer.css' %}" />
+  <link rel="stylesheet" href="{% static '../static/testimonial.css' %}" />
+  <link rel="stylesheet" href="{% static '../static/intro.css' %}" />
 {% endblock %}
 
 {% block content %}
-<div class="intro-container">
-
+  <div class="intro-container">
     <div class="intro-content">
-        <h2 class="intro-heading">{{ quiz.title }}</h2>
-        <p class="intro-text">
-            Navigating life's intricate fabric, choices unfold paths to the extraordinary,
-            demanding creativity, curiosity, and courage for a fulfilling journey.
-        </p>
-        <form method="post">
-            {% csrf_token %}
-            {% for question in questions %}
-            <h2 class="footer-site-title">{{ question.text }}</h2>
-            {% for answer in question.answer_set.all %}
-            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
-            <p class="intro-text">{{ answer.text }}</p><br>
-            {% endfor %}
-            {% endfor %}
-            <div class="intro-button-container">
-                <button class="intro-button" type="submit">Submit</button>
-            </div>
-        </form>
+      <h2 class="intro-heading">{{ quiz.title }}</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+          <h2 class="footer-site-title">{{ question.text }}</h2>
+          {% for answer in question.answer_set.all %}
+            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" />
+            <p class="intro-text">{{ answer.text }}</p><br />
+          {% endfor %}
+        {% endfor %}
+        <div class="intro-button-container">
+          <button class="intro-button" type="submit">Submit</button>
+        </div>
+      </form>
     </div>
     <figure class="intro-image">
-        <img src="{% static '../static/quizesimg/1.jpg' %}" alt="Creative Abstract Painting">
+      <img src="{% static '../static/quizesimg/1.jpg' %}" alt="Creative Abstract Painting" />
     </figure>
-</div>
-
+  </div>
 {% endblock %}

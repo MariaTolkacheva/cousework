@@ -23,6 +23,14 @@ def myfirst(request):
     return render(request, 'myfirst.html')
 
 
+def history(request):
+    return render(request, 'history.html')
+
+
+def materials(request):
+    return render(request, 'materials.html')
+
+
 @login_required
 def start_quiz_processing(request, quiz_id):
     logging.info('Starting quiz processing for user=%d', request.user.id)

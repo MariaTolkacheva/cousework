@@ -4,7 +4,9 @@ from members import views
 
 urlpatterns = [
     path('', views.myfirst, name='main'),
+    path('history/', views.history, name='history'),
     path('survey/', views.survey, name='survey'),
+    path('materials', views.materials, name='materials'),
     path('askllm', views.askllm_view, name='askllm_view'),
     path('quiz/<int:quiz_id>/', views.quiz_view, name='quiz_view'),
     path('quiz_forms/<int:quiz_id>/', views.form_view, name='quiz_forms'),

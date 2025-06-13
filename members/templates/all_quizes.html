@@ -1,75 +1,59 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block title %}
-Survey
+  Survey
 {% endblock %}
-
 
 {% block links %}
-<link rel="stylesheet" href="../static/testimonial.css">
-<link rel="stylesheet" href="../static/intro.css">
-<link rel="stylesheet" href="../static/post.css">
-<link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="../static/testimonial.css" />
+  <link rel="stylesheet" href="../static/intro.css" />
+  <link rel="stylesheet" href="../static/post.css" />
+  <link rel="stylesheet" href="../static/styles.css" />
 {% endblock %}
 
-
 {% block content %}
-<div class="intro-container">
-
+  <div class="intro-container">
     <div class="intro-content">
-        <h2 class="intro-heading">Квизы</h2>
-        <ul>
-            {% for quiz in quizzes %}
-            <div class="post-list">
-                <div class="post">
-                    <img src="../static/quizesimg/{{quiz.id}}.jpg" alt="Post Thumbnail" class="post-image">
-                    <div class="post-info">
-                        <span class="post-date">{{ quiz.id }}</span>
-                        <h3 class="post-title"><a href="{% url 'quiz_view' quiz.id %}">{{ quiz.title }}</a></h3>
-                    </div>
-                    <p class="intro-text">
-                        {{quiz.description}}
-                    </p>
-                </div>
+      <h2 class="intro-heading">Квизы</h2>
+      <ul>
+        {% for quiz in quizzes %}
+          <div class="post-list">
+            <div class="post">
+              <img src="../static/quizesimg/{{ quiz.id }}.jpg" alt="Post Thumbnail" class="post-image" />
+              <div class="post-info">
+                <span class="post-date">{{ quiz.id }}</span>
+                <h3 class="post-title"><a href="{% url 'quiz_view' quiz.id %}">{{ quiz.title }}</a></h3>
+              </div>
+              <p class="intro-text">{{ quiz.description }}</p>
             </div>
+          </div>
+        {% endfor %}
 
-            {% endfor %}
-
-            {% for quiz in text_quizzes %}
-            <div class="post-list">
-                <div class="post">
-                    <img src="../static/quizesimg/{{quiz.id}}.jpg" alt="Post Thumbnail" class="post-image">
-                    <div class="post-info">
-                        <span class="post-date">{{ quiz.id }}</span>
-                        <h3 class="post-title"><a href="{% url 'quiz_forms' quiz.id %}">{{ quiz.title }}</a></h3>
-                    </div>
-                    <p class="intro-text">
-                        {{quiz.description}}
-                    </p>
-                </div>
+        {% for quiz in text_quizzes %}
+          <div class="post-list">
+            <div class="post">
+              <img src="../static/quizesimg/{{ quiz.id }}.jpg" alt="Post Thumbnail" class="post-image" />
+              <div class="post-info">
+                <span class="post-date">{{ quiz.id }}</span>
+                <h3 class="post-title"><a href="{% url 'quiz_forms' quiz.id %}">{{ quiz.title }}</a></h3>
+              </div>
+              <p class="intro-text">{{ quiz.description }}</p>
             </div>
-
-            {% endfor %}
-        </ul>
-
+          </div>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 
-
-</div>
-
-<div class="testimonial-container">
+  <div class="testimonial-container">
     <div class="testimonial-box">
-        <div class="spacer"></div>
+      <div class="spacer"></div>
 
-        <h3 class="testimonial-quote">
-            “Crispy on the outside, gooey on the inside, and packed with chocolatey goodness in every bite. One taste,
-            and you'll be hooked—it's like a warm hug in cookie form!”
-        </h3>
+      <h3 class="testimonial-quote">“Если вы хотите изменить поведение, вы должны его понимать. Традиционная экономика предполагает, что люди принимают идеальные решения, но в реальном мире мы всего лишь люди. Мы прокрастинируем, поддаёмся когнитивным искажениям, и нам иногда нужен "толчок". Поведенческая экономика — это не просто предсказание ошибок, а проектирование мира, который помогает людям делать лучший выбор”</h3>
 
-        <p class="testimonial-author">- Valerie, NY</p>
+      <p class="testimonial-author">Ричард Талер, лауреат Нобелевской премии по экономике и автор книги "Nudge. Архитектура выбора"</p>
 
-        <div class="spacer"></div>
+      <div class="spacer"></div>
     </div>
-</div>
+  </div>
 {% endblock %}

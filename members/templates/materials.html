@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Ресурсы по поведенческой экономике
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="../static/myfirst.css" />
+  <link rel="stylesheet" href="../static/footer.css" />
+  <link rel="stylesheet" href="../static/featured-product.css" />
+  <link rel="stylesheet" href="../static/team.css" />
+  <style>
+    .resources-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .resource-section {
+      margin-bottom: 60px;
+    }
+    
+    .resource-section h2 {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .resource-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, #3498db, #9b59b6);
+      border-radius: 3px;
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .resource-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .resource-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .resource-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .resource-card:hover .resource-image img {
+      transform: scale(1.05);
+    }
+    
+    .resource-content {
+      padding: 25px;
+    }
+    
+    .resource-content h3 {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    
+    .resource-content p {
+      color: #34495e;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .resource-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #3498db, #9b59b6);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .resource-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    .highlight-banner {
+      background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+      border-radius: 15px;
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    
+    .highlight-banner h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    
+    .highlight-banner p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    
+    @media (max-width: 768px) {
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="call-to-action is-style-section-1">
+    <div class="cover alignwide" style="border-radius: 20px; min-height: 60vh;">
+      <img class="cover-image" src="../static/images/bookshelf.jpg" alt="Книги по поведенческой экономике" data-object-fit="cover" />
+      <div class="cover-content">
+        <h1 class="cover-heading text-with-shadow has-theme-4-color has-text-color has-link-color">Ресурсы по поведенческой экономике</h1>
+        <p class="cover-subtitle" style="font-size: 1.5rem; max-width: 800px; margin: 20px auto;">Книги, сайты, курсы и инструменты для изучения поведенческой науки</p>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+  </div>
+
+  <div class="resources-container">
+    <div class="highlight-banner">
+      <h2>Мир поведенческой экономики</h2>
+      <p>Эта коллекция содержит самые ценные ресурсы по поведенческой экономике — от основополагающих книг до современных приложений в бизнесе и политике. Независимо от того, студент вы, профессионал или просто интересуетесь принятием решений, эти материалы помогут углубить ваше понимание.</p>
+    </div>
+
+    <div class="resource-section">
+      <h2>Основополагающие книги</h2>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/thinking-fast-slow.jpg" alt="Думай медленно... решай быстро" />
+          </div>
+          <div class="resource-content">
+            <h3>Думай медленно... решай быстро</h3>
+            <p>Даниэль Канеман подводит итог десятилетиям исследований когнитивных искажений и двух систем мышления. Обязательное чтение для понимания эвристик и предубеждений.</p>
+            <a href="https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555" class="resource-link" target="_blank">Посмотреть книгу</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/nudge.jpg" alt="Nudge. Архитектура выбора" />
+          </div>
+          <div class="resource-content">
+            <h3>Nudge. Архитектура выбора</h3>
+            <p>Ричард Талер и Касс Санстейн представляют концепцию либертарианского патернализма и показывают, как небольшие изменения в архитектуре выбора ("подталкивания") могут значительно влиять на решения.</p>
+            <a href="https://www.chitai-gorod.ru/product/nudge-arkhitektura-vybora-kak-uluchshit-nashi-resheniya-kashe-sansteyn-2467529" class="resource-link" target="_blank">Посмотреть книгу</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/misbehaving.jpg" alt="Новая поведенческая экономика" />
+          </div>
+          <div class="resource-content">
+            <h3>Новая поведенческая экономика</h3>
+            <p>Ричард Талер в увлекательной форме рассказывает историю поведенческой экономики, делится личными историями и объясняет, как бросить вызов традиционным экономическим предположениям.</p>
+            <a href="https://www.amazon.com/Misbehaving-Behavioral-Economics-Richard-Thaler/dp/039335279X" class="resource-link" target="_blank">Посмотреть книгу</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-section">
+      <h2>Ключевые сайты и организации</h2>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/bh.jpg" alt="Behavioral Insights Team" />
+          </div>
+          <div class="resource-content">
+            <h3>Behavioral Insights Team</h3>
+            <p>Оригинальный "Nudge Unit", созданный правительством Великобритании. На сайте представлены кейсы, отчеты и инструменты для применения поведенческой науки в политике.</p>
+            <a href="https://www.bi.team" class="resource-link" target="_blank">Перейти на сайт</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/bs.jpg" alt="Behavioral Scientist" />
+          </div>
+          <div class="resource-content">
+            <h3>Behavioral Scientist</h3>
+            <p>Отличный онлайн-журнал с доступными статьями о новых исследованиях и приложениях поведенческой науки в различных областях.</p>
+            <a href="https://behavioralscientist.org" class="resource-link" target="_blank">Перейти на сайт</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="../static/images/cbs.jpg" alt="Центр поведенческих наук" />
+          </div>
+          <div class="resource-content">
+            <h3>Центр перспективных исследований</h3>
+            <p>Исследовательский центр Университета Дьюка, специализирующийся на применении поведенческой экономики для улучшения жизни. Предлагает бесплатные ресурсы и инструменты.</p>
+            <a href="https://advanced-hindsight.com" class="resource-link" target="_blank">Перейти на сайт</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-section">
+      <h2>Онлайн-курсы и обучение</h2>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-content">
+            <h3>Экономика денег и банковского дела</h3>
+            <p>Курс создан специально для специалистов банковского сектора.</p>
+            <a href="https://www.coursera.org/learn/money-banking" class="resource-link" target="_blank">Посмотреть курс</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-content">
+            <h3>Введение в потребительскую нейронауку и нейромаркетинг</h3>
+            <p>Отличная специализация на Coursera, охватывающая основные концепции с практическими приложениями в бизнесе и политике. Преподается ведущими экспертами.</p>
+            <a href="https://www.coursera.org/learn/neuromarketing" class="resource-link" target="_blank">Посмотреть курс</a>
+          </div>
+        </div>d:\111.jpg d:\222.jpg<div class="resource-card">
+          <div class="resource-content">
+            <h3>Мастер-класс по поведенческой экономике (Udemy)</h3>
+            <p>Практический курс, посвященный применению принципов поведенческой экономики в бизнесе, маркетинге и дизайне продуктов.</p>
+            <a href="https://www.udemy.com/course/behavioral-economics/" class="resource-link" target="_blank">Посмотреть курс</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-section">
+      <h2>Инструменты и практические ресурсы</h2>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-content">
+            <h3>Атлас когнитивных искажений</h3>
+            <p>Интерактивная визуализация 180+ когнитивных искажений, организованных в понятную систему. Незаменимый справочник.</p>
+            <a href="https://betterhumans.pub/cognitive-bias-cheat-sheet-55a472476b18" class="resource-link" target="_blank">Посмотреть ресурс</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-content">
+            <h3>Инструментарий поведенческой экономики</h3>
+            <p>Практическое руководство от ОЭСР с методами применения поведенческих инсайтов к политическим вызовам.</p>
+            <a href="https://www.oecd.org/gov/regulatory-policy/behavioral-insights-toolkit-and-ethics-principles-for-policy-makers.htm" class="resource-link" target="_blank">Посмотреть инструментарий</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-content">
+            <h3>Шаблоны поведенческого дизайна</h3>
+            <p>Коллекция доказательных шаблонов дизайна для применения поведенческой науки в продуктах и сервисах.</p>
+            <a href="https://www.behavioraldesign.academy/guides" class="resource-link" target="_blank">Посмотреть шаблоны</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="featured-product">
+    <div class="spacer"></div>
+
+    <div class="product-container">
+      <div class="product-image">
+        <img src="../static/images/money.jpg" alt="Непрерывное обучение" />
+      </div>
+      <div class="product-details">
+        <h2>Продолжайте изучать поведенческую экономику</h2>
+        <div class="product-description">
+          <p>Область поведенческой экономики постоянно развивается, поскольку исследователи открывают новые аспекты принятия решений. Эти ресурсы представляют лишь начало того, что доступно для понимания и применения принципов поведенческой науки.</p>
+
+          <p>Для отслеживания последних разработок подпишитесь на ведущих исследователей в соцсетях, рассылки о поведенческой науке и присоединитесь к профессиональным сообществам.</p>
+
+          <p>Помните, что настоящее освоение поведенческой экономики требует как понимания теории, так и применения через эксперименты и наблюдения в реальных условиях.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+  </section>
+{% endblock %}

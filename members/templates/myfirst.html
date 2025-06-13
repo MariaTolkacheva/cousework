@@ -23,12 +23,13 @@
         </div>
     </div>
 
+    
     <div class="ticker-tape alignwide">
 
-        <a href="#" class="btn-outline">Историческая справка</a>
+        <a href="/history" class="btn-outline">Историческая справка</a>
         <a href="{% url 'askllm_view' %}" class="btn-outline">Спросить AI</a>
         <a href="/survey" class="btn-outline">Тестирование</a>
-        <a href="#" class="btn-outline">Полезные матриалы</a>
+        <a href="/materials" class="btn-outline">Полезные матриалы</a>
         {% if user.is_authenticated %}
             <a href="{% url 'score_history_by_id' 1%} " class="btn-outline">My Statistics</a>
         {% else %}
